@@ -12,7 +12,11 @@ class Cli
         print_city_prompt
         city = gets.chomp
         get_brewery_by_city(city)
+        puts ""
+        puts ""
         print_all
+        puts ""
+        puts ""
     end
 
     def selection_details
@@ -22,17 +26,23 @@ class Cli
         puts ""
         puts ""
         puts Brewery.all[input.to_i-1].name
-        puts "------------------------"
+        puts "--------------------------------"
         puts ""
-        puts "#{Brewery.all[input.to_i-1].street} #{Brewery.all[input.to_i-1].city}, #{Brewery.all[input.to_i-1].state}. "
+        puts "Address: #{Brewery.all[input.to_i-1].street} #{Brewery.all[input.to_i-1].city}, #{Brewery.all[input.to_i-1].state}. "
         puts ""
-        puts Brewery.all[input.to_i-1].phone
+        puts "Phone #: #{Brewery.all[input.to_i-1].phone}"
         puts ""
-        puts Brewery.all[input.to_i-1].website
+        puts "Website: #{Brewery.all[input.to_i-1].website}"
     end
 
     def print_welcome
-        puts "Welcome to the Brewery CLI"
+        puts "Welcome to Beer Near Me!"
+        puts ""
+        sleep (1)
+        puts "Find Local Breweries in your city!"
+        puts ""
+        puts ""
+        puts ""
     end
 
     def print_city_prompt
