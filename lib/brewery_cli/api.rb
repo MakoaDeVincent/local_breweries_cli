@@ -12,8 +12,8 @@ class Api
     #    end
     #end
 
-    def self.get_brewery_by_city(city)
-        res = RestClient.get("#{BASE_URL}?by_city=#{city}")
+    def self.get_brewery_by_city(state, city)
+        res = RestClient.get("#{BASE_URL}?by_state=#{state}&by_city=#{city}")
         data = JSON.parse(res.body)
         data.each do |brewery|
             name =  brewery['name']
