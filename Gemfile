@@ -8,4 +8,4 @@ gem 'pry'
 gem 'rest-client'
 gem 'json'
 gem 'awesome_print'
-
+gem 'colorize'

@@ -34,7 +34,7 @@ class Cli
         puts ""
         puts ""
         puts ""
-        puts Brewery.all[input.to_i-1].name
+        puts Brewery.all[input.to_i-1].name.colorize(:yellow)
         puts "--------------------------------"
         puts ""
         puts "Address: #{Brewery.all[input.to_i-1].street} #{Brewery.all[input.to_i-1].city}, #{Brewery.all[input.to_i-1].state}."
@@ -63,6 +63,7 @@ class Cli
         puts ""
         print_all
         puts ""
+        sleep (2)
         selection_details
         print_options
         options
@@ -73,10 +74,10 @@ class Cli
     #---------------------------------------
 
     def print_welcome
-        puts "Welcome to Beer Near Me!"
+        puts "Welcome to Beer Near Me!".colorize(:yellow)
         puts ""
         sleep (1)
-        puts "Find Local Breweries in your city!"
+        puts "Find Local Breweries in your city!".colorize(:yellow)
         puts ""
         puts ""
         puts ""
@@ -92,13 +93,13 @@ class Cli
 
     def print_all
         if Brewery.all == []
-            puts "Sorry, there doesn't seem to be any breweries in your city. Try inputting a nearby city to see breweries in that area."
+            puts "Sorry, there doesn't seem to be any breweries in your city. Try inputting a nearby city to see breweries in that area.".colorize(:red)
             puts ""
             sleep (1)
             select_city
         else 
             Brewery.all.each_with_index do |brewery, index|            
-                puts "#{index+1}. #{brewery.name}"   
+                puts "#{index+1}. #{brewery.name}".colorize(:yellow)
             end     
         end
     end
@@ -108,8 +109,8 @@ class Cli
     end
 
     def print_options
-        puts "To pick a new brewery in your city, please type 'list'."
-        puts "To exit, please type 'exit'."
+        puts "To pick a new brewery in your city, please type" + " " + "'list'.".colorize(:yellow)
+        puts "To exit, please type" + " " + "'exit'.".colorize(:yellow)
         puts ""
         puts ""
     end
@@ -117,7 +118,7 @@ class Cli
     def print_exit
         puts ""
         puts ""
-        puts "Thank you for using Beer Near Me! Enjoy your beer!"
+        puts "Thank you for using Beer Near Me! Enjoy your beer!".colorize(:yellow)
         puts ""
         puts ""
     end
