@@ -7,7 +7,8 @@ class Cli
         sleep (1)
         selection_details
         sleep (1)
-        #print_end
+        print_options
+        options
     end
 
     def select_city
@@ -45,6 +46,31 @@ class Cli
         puts ""
     end
 
+    def options
+        selection = gets.chomp.downcase
+        if selection == "exit"
+            print_exit
+        elsif selection == "list"
+            list
+        else
+            puts "Sorry, I didn't quite get that. Try again!"
+            options
+        end
+    end
+
+
+    def list
+        puts ""
+        print_all
+        puts ""
+        selection_details
+        print_options
+        options
+    end
+
+
+    # PRINT METHODS
+    #---------------------------------------
 
     def print_welcome
         puts "Welcome to Beer Near Me!"
@@ -78,13 +104,22 @@ class Cli
     end
 
     def print_selection_prompt
-        puts "Please select the number corresponding to the brewery you would like to see more information on."
+        puts "Please select the number corresponding to the brewery that you would like to see more information on."
     end
 
-    #def print_end
-    #    puts "To exit, please type 'exit'."
-    #    puts "To pick a new brewery in your city, please type 'back'."
-    #    puts "To search breweries in a new city, please type 'new'."
-    #end
+    def print_options
+        puts "To pick a new brewery in your city, please type 'list'."
+        puts "To exit, please type 'exit'."
+        puts ""
+        puts ""
+    end
+
+    def print_exit
+        puts ""
+        puts ""
+        puts "Thank you for using Beer Near Me! Enjoy your beer!"
+        puts ""
+        puts ""
+    end
 
 end
