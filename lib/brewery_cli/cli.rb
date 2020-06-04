@@ -65,8 +65,15 @@ class Cli
     end
 
     def print_all
-        Brewery.all.each_with_index do |brewery, index|            
-            puts "#{index+1}. #{brewery.name}"            
+        if Brewery.all == []
+            puts "Sorry, there doesn't seem to be any breweries in your city. Try inputting a nearby city to see breweries in that area."
+            puts ""
+            sleep (1)
+            select_city
+        else 
+            Brewery.all.each_with_index do |brewery, index|            
+                puts "#{index+1}. #{brewery.name}"   
+            end     
         end
     end
 
