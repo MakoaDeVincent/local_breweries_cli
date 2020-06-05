@@ -3,20 +3,20 @@ class Cli
     def run
         print_welcome
         sleep (1)
-        select_city
+        select_location
         sleep (1)
-        selection_details
+        brewery_selection
         sleep (1)
         print_options
         options
     end
 
-    def select_city
+    def select_location
         print_state_prompt
         state = gets.chomp
         print_city_prompt
         city = gets.chomp
-        get_brewery_by_city(state, city)
+        get_brewery_by_state_and_city(state, city)
         puts ""
         puts ""
         print_all
@@ -24,20 +24,13 @@ class Cli
         puts ""
     end
   
-    def get_brewery_by_city(state, city)
-        Api.get_brewery_by_city(state, city)
+    def get_brewery_by_state_and_city(state, city)
+        Api.get_brewery_by_state_and_city(state, city)
     end
 
-    def selection_details
+    def brewery_selection
         print_selection_prompt
         input = gets.chomp.to_i
-        # if !valid_selection?(input)
-        #     print_error
-        #     selection_details
-        # else
-        #     brewery = find_brewery(input)
-        #     print_brewery_details(brewery)
-        # end
         
         if input < 1 || input > Brewery.all.size
             puts "Sorry, that doesnt seem to be a valid number.".colorize(:red)
@@ -45,7 +38,7 @@ class Cli
             puts "Try again!".colorize(:red)
             puts ""
             sleep (1)
-            selection_details
+            brewery_selection
         else
             puts ""
             puts ""
@@ -84,7 +77,7 @@ class Cli
         print_all
         puts ""
         sleep (1)
-        selection_details
+        brewery_selection
         print_options
         options
     end
@@ -116,7 +109,7 @@ class Cli
             puts "Sorry, there doesn't seem to be any breweries in your city. Try inputting a nearby city to see breweries in that area.".colorize(:red)
             puts ""
             sleep (1)
-            select_city
+            select_location
         else 
             Brewery.all.each_with_index do |brewery, index|            
                 puts "#{index+1}. #{brewery.name}".colorize(:yellow)
