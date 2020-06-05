@@ -51,7 +51,10 @@ class Cli
             puts ""
             puts "Website: #{Brewery.all[input.to_i-1].website}"
             puts ""
+            puts "--------------------------------"
             puts ""
+            puts ""
+
         end
     end
 
