@@ -12,16 +12,10 @@ class Brewery
         @phone = phone
         @website = website
         @@all << self
-        remove_brewery_in_planning
     end
 
     def self.all
         @@all
-    end
-
-    def remove_brewery_in_planning
-        @@all.delete_if {|brewery| brewery.name.include? "Brewery in Planning"}
-        #only deletes first occurance, doesnt delete occurances after that
     end
 
 end

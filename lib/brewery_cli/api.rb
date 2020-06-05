@@ -23,6 +23,7 @@ class Api
             state = brewery['state']
             phone = brewery['phone']
             website = brewery['website_url']
+            next brewery if brewery['brewery_type'] == "planning"
             Brewery.new(name, id, street, city, state, phone, website)
         end
     end
