@@ -30,20 +30,29 @@ class Cli
 
     def selection_details
         print_selection_prompt
-        input = gets.chomp
-        puts ""
-        puts ""
-        puts ""
-        puts Brewery.all[input.to_i-1].name.colorize(:yellow)
-        puts "--------------------------------"
-        puts ""
-        puts "Address: #{Brewery.all[input.to_i-1].street} #{Brewery.all[input.to_i-1].city}, #{Brewery.all[input.to_i-1].state}."
-        puts ""
-        puts "Phone #: #{Brewery.all[input.to_i-1].phone}"
-        puts ""
-        puts "Website: #{Brewery.all[input.to_i-1].website}"
-        puts ""
-        puts ""
+        input = gets.chomp.to_i
+        if input < 1 || input > Brewery.all.size
+            puts "Sorry, that doesnt seem to be a valid number.".colorize(:red)
+            sleep (1)
+            puts "Try again!".colorize(:red)
+            puts ""
+            sleep (1)
+            selection_details
+        else
+            puts ""
+            puts ""
+            puts ""
+            puts Brewery.all[input.to_i-1].name.colorize(:yellow)
+            puts "--------------------------------"
+            puts ""
+            puts "Address: #{Brewery.all[input.to_i-1].street} #{Brewery.all[input.to_i-1].city}, #{Brewery.all[input.to_i-1].state}."
+            puts ""
+            puts "Phone #: #{Brewery.all[input.to_i-1].phone}"
+            puts ""
+            puts "Website: #{Brewery.all[input.to_i-1].website}"
+            puts ""
+            puts ""
+        end
     end
 
     def options
@@ -53,7 +62,7 @@ class Cli
         elsif selection == "list"
             list
         else
-            puts "Sorry, I didn't quite get that. Try again!"
+            puts "Sorry, I didn't quite get that. Try again!".colorize(:red)
             options
         end
     end
@@ -63,7 +72,7 @@ class Cli
         puts ""
         print_all
         puts ""
-        sleep (2)
+        sleep (1)
         selection_details
         print_options
         options
