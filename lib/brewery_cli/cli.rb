@@ -31,6 +31,14 @@ class Cli
     def selection_details
         print_selection_prompt
         input = gets.chomp.to_i
+        # if !valid_selection?(input)
+        #     print_error
+        #     selection_details
+        # else
+        #     brewery = find_brewery(input)
+        #     print_brewery_details(brewery)
+        # end
+        
         if input < 1 || input > Brewery.all.size
             puts "Sorry, that doesnt seem to be a valid number.".colorize(:red)
             sleep (1)
