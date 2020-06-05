@@ -23,7 +23,9 @@ class Cli
         puts ""
         puts ""
     end
-
+    def test
+        puts 'practicing branching'
+    end
     def get_brewery_by_city(state, city)
         Api.get_brewery_by_city(state, city)
     end
