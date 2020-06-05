@@ -11,3 +11,5 @@ This CLI project utilizes the [Open Brewery DB](https://www.openbrewerydb.org/) 
 # Getting Started
 
 User must enter `bundle install` in the terminal to install the gems required in the application
+
+To run the application type `bin/run` from the applications main directory.
